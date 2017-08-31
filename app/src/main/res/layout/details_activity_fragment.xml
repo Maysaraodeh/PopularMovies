@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<ScrollView
+    android:id="@+id/scroll_view"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/titleTextView"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleTextView"
+        android:background="#06a500"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:paddingLeft="10dp"
+        android:layout_margin="0dp"
+        android:paddingStart="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="15dp"
+        android:text="Header Movie"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/posterImageView"
+        android:layout_below="@+id/titleTextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/releaseDate"
+        android:text="7th July, 1996"
+        android:layout_alignTop="@+id/posterImageView"
+        android:layout_toRightOf="@+id/posterImageView"
+        android:layout_toEndOf="@+id/posterImageView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"/>
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rating"
+        android:layout_alignLeft="@+id/releaseDate"
+        android:layout_alignStart="@+id/releaseDate"
+        android:layout_below="@+id/releaseDate"
+        style="?android:attr/ratingBarStyleSmall"
+        android:isIndicator="true"
+        android:stepSize="0.25"
+        android:layout_marginTop="10dp"
+        android:rating="5.0"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingTextView"
+        android:layout_below="@+id/rating"
+        android:layout_alignLeft="@+id/rating"
+        android:layout_alignStart="@+id/rating"
+        android:text="8.1/10"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/overviewTextView"
+        android:layout_below="@+id/posterImageView"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="Some text here"/>
+
+    <TextView
+        android:id="@+id/trailer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/overviewTextView"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="Trailers"
+        android:textColor="@color/cardview_dark_background"
+        android:textStyle="bold" />
+
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/trailer_text"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:divider="?android:dividerHorizontal"
+            android:showDividers="middle">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_trailers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+            </android.support.v7.widget.RecyclerView>
+
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/reviews_text"
+        android:textSize="20sp"
+        android:text="Reviews"
+        android:layout_below="@+id/horizontal_scroll"
+        android:textColor="@color/cardview_dark_background"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/cardview_light_background"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_reviews"
+        android:layout_below="@+id/reviews_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>
+
+</ScrollView>

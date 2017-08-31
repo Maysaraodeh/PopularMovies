@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="poster_width">185</integer>
+    <integer name="poster_height">287</integer>
+    <integer name="poster_trailer_width">285</integer>
+    <integer name="poster_trailer_height">187</integer>
+    <integer name="poster_details_width">385</integer>
+    <integer name="poster_details_height">487</integer>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PopularMovies</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="parcel_key">Parclelable Key</string>
+    <string name="sort_by_pop">popular</string>
+    <string name="sort_by_top">top_rated</string>
+    <string name="action_favorite">Favorite</string>
+    <string name="api_key">0a4f7921a568353b527e40bbf3776de9</string>
+    <string name="internet_connection">Check your internet connection</string>
+    <string name="action_sort_by_popularity">Most Popular</string>
+    <string name="action_sort_by_rating">Highest Rated</string>
+    <string name="title_activity_detail">Movie Details</string>
+    <string name="action_sort_by_favorite">Favorites</string>
+    <string name="action_sort_by">Sort by</string>
+    <string name="content_authority">com.masotech.popularmovies_stage1_recyclerview</string>
+</resources>
