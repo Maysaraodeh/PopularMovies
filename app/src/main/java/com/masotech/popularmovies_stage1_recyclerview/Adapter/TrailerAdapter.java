@@ -46,11 +46,14 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerV
     @Override
     public void onBindViewHolder(TrailerViewHolder holder, final int position) {
 
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse("http://www.youtube.com/watch?v=" + mTrailer[position].getKey()));
+                if(intent.resolveActivity(mContext.getPackageManager())!=null)
                 mContext.startActivity(intent);
             }
         });

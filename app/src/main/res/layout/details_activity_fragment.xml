@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-
-<ScrollView
-    android:id="@+id/scroll_view"
-    android:layout_gravity="center_horizontal"
+<ScrollView android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_below="@+id/titleTextView"
+    android:focusable="true"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/titleTextView"
-        android:background="#06a500"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:paddingLeft="10dp"
-        android:layout_margin="0dp"
-        android:paddingStart="10dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="15dp"
-        android:text="Header Movie"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleTextView"
+                android:background="#06a500"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:paddingLeft="10dp"
+                android:layout_margin="0dp"
+                android:paddingStart="10dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"
+                android:text="Header Movie"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -120,16 +113,10 @@
             android:divider="?android:dividerHorizontal"
             android:showDividers="middle">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_trailers"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-            </android.support.v7.widget.RecyclerView>
-
-
-
-
+           <include
+               layout="@layout/trailer_layout"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"/>
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -154,8 +141,10 @@
         android:layout_height="match_parent"
         >
     </android.support.v7.widget.RecyclerView>
+       </RelativeLayout>
+
+    </ScrollView>
 
 
-</RelativeLayout>
 
-</ScrollView>
+

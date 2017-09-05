@@ -1,6 +1,7 @@
 package com.masotech.popularmovies_stage1_recyclerview;
 
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,8 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
+    DetailsActivityFragment detailsActivityFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,13 +24,16 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-        DetailsActivityFragment detailsActivityFragment = new DetailsActivityFragment();
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
+
+        detailsActivityFragment = new DetailsActivityFragment();
 
         fragmentManager.beginTransaction()
                 .replace(R.id.details_activity , detailsActivityFragment)
                 .commit();
+
 
 
 
@@ -41,6 +47,7 @@ public class DetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

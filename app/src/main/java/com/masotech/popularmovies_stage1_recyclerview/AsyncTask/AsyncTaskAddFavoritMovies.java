@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.masotech.popularmovies_stage1_recyclerview.Fragment.DetailsActivityFragment;
+import com.masotech.popularmovies_stage1_recyclerview.Fragment.MainActivityFragment;
 import com.masotech.popularmovies_stage1_recyclerview.R;
 import com.masotech.popularmovies_stage1_recyclerview.Utility.Utility;
 import com.masotech.popularmovies_stage1_recyclerview.db.MovieContract;
@@ -35,7 +36,6 @@ public class AsyncTaskAddFavoritMovies extends AsyncTask<Void , Void , Integer> 
     protected void onPostExecute(Integer isFavorit) {
 
         if(isFavorit >= 1){
-           // DetailsActivityFragment.favorit.setIcon(R.drawable.test);
 
             new AsyncTask<Void, Void, Integer>() {
                 @Override

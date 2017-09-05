@@ -15,8 +15,10 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.Call
 
 
     public static boolean mTwoPane = false;
+    private static final String FRAGMENT_KEY = "MY_FRAGMENT";
 
 
+    MainActivityFragment mainActivityFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,14 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.Call
 
 
         mTwoPane = (mDetailsPlaceholder != null);
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
+        if(savedInstanceState != null){
+            mainActivityFragment = (MainActivityFragment) getSupportFragmentManager().getFragment(savedInstanceState , FRAGMENT_KEY);
+        }else{
+            mainActivityFragment = new MainActivityFragment();
+        }
 
-            MainActivityFragment mainActivityFragment = new MainActivityFragment();
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
 
             fragmentManager.beginTransaction()
                     .replace(R.id.main_activity, mainActivityFragment)
@@ -59,15 +64,19 @@ public class MainActivity extends AppCompatActivity implements ImageAdapter.Call
         }
     }
 
-//    @Override
-//    protected void onSaveInstanceState(Bundle outState) {
-//        super.onSaveInstanceState(outState);
-//
-//        getSupportFragmentManager().putFragment(outState, "my_fragment", myFragment);
-//
-//    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        getSupportFragmentManager().putFragment(outState, FRAGMENT_KEY, mainActivityFragment);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mainActivityFragment.onResume();
+    }
 }
 
 

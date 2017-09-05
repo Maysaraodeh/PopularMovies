@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import com.masotech.popularmovies_stage1_recyclerview.R;
 import com.masotech.popularmovies_stage1_recyclerview.Adapter.ReviewAdapter;
 import com.masotech.popularmovies_stage1_recyclerview.TaskCompleted.TaskCompleted;
 import com.masotech.popularmovies_stage1_recyclerview.Adapter.TrailerAdapter;
+import com.masotech.popularmovies_stage1_recyclerview.Utility.Utility;
 import com.masotech.popularmovies_stage1_recyclerview.models.Movie;
 import com.masotech.popularmovies_stage1_recyclerview.models.Review;
 import com.masotech.popularmovies_stage1_recyclerview.models.Trailer;
@@ -50,12 +53,10 @@ public class DetailsActivityFragment extends Fragment {
     private RatingBar mRatingBar ;
     private TextView mOverview;
     public static final String DETAIL_MOVIE = "DETAIL_MOVIE";
-    public static final String SAVED_LAYOUT_MANAGER = "SAVED_LAYOUT_MANAGER";
-    private static final String LIST_STATE_KEY = "SAVE_SCROLL";
-    private Parcelable mListState;
     public static MenuItem favorit;
 
     ScrollView mScrollView;
+    private int top;
 
     private Movie movie;
     private RecyclerView mReviewsRecyclerView;
@@ -69,6 +70,7 @@ public class DetailsActivityFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
 
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -88,7 +90,16 @@ public class DetailsActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.details_activity_fragment , container , false);
+
+        mScrollView = (ScrollView) view.findViewById(R.id.scroll_view);
+        View v = mScrollView.getChildAt(0);
+         top = v.getTop();
+
+
+
+
         mTitle = (TextView) view.findViewById(R.id.titleTextView);
+
         mRating = (TextView) view.findViewById(R.id.ratingTextView);
         mReleaseDate = (TextView)view. findViewById(R.id.releaseDate);
         mPoster = (ImageView) view.findViewById(R.id.posterImageView);
@@ -118,13 +129,23 @@ public class DetailsActivityFragment extends Fragment {
         mReleaseDate.setText(movie.getReleaseDate());
         mTitle.setText(movie.getOriginalTitle());
 
+
         String movieId = (movie.getMovieId()).toString();
         mTrailersRecyclerView = (RecyclerView) view.findViewById(R.id.rv_trailers);
         mReviewsRecyclerView = (RecyclerView) view.findViewById(R.id.rv_reviews);
 
         loadTrailers(movieId);
 
+
+
+
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mScrollView.scrollTo(0 ,top);
     }
 
     @Override
@@ -145,6 +166,11 @@ public class DetailsActivityFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_details_fragment , menu);
         favorit = menu.findItem(R.id.action_favorite);
+        if(Utility.isInFavorits(getContext(), movie.getMovieId()) >= 1){
+            favorit.setIcon(R.drawable.favourited512x512);
+        }else {
+            favorit.setIcon(R.drawable.favourite512x512);
+        }
 
 
     }
@@ -194,6 +220,11 @@ public class DetailsActivityFragment extends Fragment {
         }
 
     }
+
+
+
+
+
 
 
 

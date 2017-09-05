@@ -113,6 +113,14 @@ public class MainActivityFragment extends Fragment {
 
 
 
+    @Override
+    public void onResume() {
+
+        if(sortBy == FAVORITE){
+            loadMovies(sortBy);
+        }
+        super.onResume();
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
